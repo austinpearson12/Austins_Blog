@@ -7,12 +7,16 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Austins_Blog.Models;
+using Austins_Blog.Utilities;
+using Microsoft.Ajax.Utilities;
 
 namespace Austins_Blog.Controllers
 {
     public class BlogPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        public string slug { get; private set; }
 
         // GET: BlogPosts
         public ActionResult Index()
@@ -50,6 +54,19 @@ namespace Austins_Blog.Controllers
         {
             if (ModelState.IsValid)
             {
+                var slug = StringUtilities.UrlFriendly(blogPost.Title);
+                    if (string.IsNullOrWhiteSpace(slug))
+                {
+                    ModelState.AddModelError("Title", "Invalid title");
+                    return View(blogPost);
+                }
+                    if (db.BlogPosts.Any(p => p.Slug == slug))
+                {
+                    ModelState.AddModelError("Title", "The title must be unique");
+                    return View(blogPost);
+                }
+                blogPost.Slug = slug;
+                blogPost.Created = DateTimeOffset.Now;
                 db.BlogPosts.Add(blogPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,14 +95,35 @@ namespace Austins_Blog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Abstract,Slug,Body,MediaUrl,Published,Created,Updated")] BlogPost blogPost)
+        public ActionResult Edit([Bind(Include = "Id,Title,Slug,Abstract,Body,MediaUrl,Published")] BlogPost blogPost)
         {
             if (ModelState.IsValid)
             {
+                var slug = StringUtilities.UrlFriendly(blogPost.Title);
+
+                if (blogPost.Slug != slug)
+                {
+                    if (string.IsNullOrWhiteSpace(slug))
+                    {
+                        ModelState.AddModelError("Title", "Invalid title");
+                        return View(blogPost);
+                    }
+                    if (db.BlogPosts.Any(p => p.Slug == slug))
+                    {
+                        ModelState.AddModelError("Title", "The title must be unique");
+                        return View(blogPost);
+                    }
+                    blogPost.Slug = slug;
+                }
+
+
+               
+                blogPost.Updated = DateTimeOffset.Now;
                 db.Entry(blogPost).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(blogPost);
         }
 
