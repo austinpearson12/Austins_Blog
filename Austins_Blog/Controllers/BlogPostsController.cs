@@ -25,13 +25,13 @@ namespace Austins_Blog.Controllers
         }
 
         // GET: BlogPosts/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string slug)
         {
-            if (id == null)
+            if (slug == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.BlogPosts.Find(id);
+            var blogPost = db.BlogPosts.FirstOrDefault(p => p.Slug == slug);
             if (blogPost == null)
             {
                 return HttpNotFound();
