@@ -21,7 +21,8 @@ namespace Austins_Blog.Controllers
         // GET: BlogPosts
         public ActionResult Index()
         {
-            return View(db.BlogPosts.ToList());
+            var publishedBlogPosts = db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).ToList();
+            return View(publishedBlogPosts);
         }
 
         // GET: BlogPosts/Details/5

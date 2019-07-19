@@ -186,17 +186,32 @@
     <Compile Include="Utilities\StringUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\theme-1.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="images\.DS_Store" />
+    <Content Include="images\blog\.DS_Store" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="images\about-me.jpg" />
+    <Content Include="images\blog\blog-post-banner.jpg" />
+    <Content Include="images\blog\blog-post-thumb-1.jpg" />
+    <Content Include="images\blog\blog-post-thumb-10.jpg" />
+    <Content Include="images\blog\blog-post-thumb-11.jpg" />
+    <Content Include="images\blog\blog-post-thumb-12.jpg" />
+    <Content Include="images\blog\blog-post-thumb-2.jpg" />
+    <Content Include="images\blog\blog-post-thumb-3.jpg" />
+    <Content Include="images\blog\blog-post-thumb-4.jpg" />
+    <Content Include="images\blog\blog-post-thumb-5.jpg" />
+    <Content Include="images\blog\blog-post-thumb-6.jpg" />
+    <Content Include="images\blog\blog-post-thumb-7.jpg" />
+    <Content Include="images\blog\blog-post-thumb-8.jpg" />
+    <Content Include="images\blog\blog-post-thumb-9.jpg" />
+    <Content Include="images\hamburger.svg" />
+    <Content Include="images\profile.png" />
+    <Content Include="images\promo-banner.jpg" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -207,6 +222,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\tinymce\jquery.tinymce.min.js" />
     <Content Include="Scripts\tinymce\license.txt" />
     <Content Include="Scripts\tinymce\plugins\advlist\plugin.js" />
@@ -387,10 +403,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
