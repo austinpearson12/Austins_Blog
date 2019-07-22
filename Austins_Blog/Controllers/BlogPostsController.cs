@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -28,7 +29,7 @@ namespace Austins_Blog.Controllers
         // GET: BlogPosts/Details/5
         public ActionResult Details(string slug)
         {
-            if (slug == null)
+            if (string.IsNullOrWhiteSpace(slug))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -51,10 +52,20 @@ namespace Austins_Blog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Title,Abstract,Body,Published")] BlogPost blogPost)
+        public ActionResult Create([Bind(Include = "Title,Abstract,Body,Published")] BlogPost blogPost, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+                #region Image Section
+                if (ImageUploadValidator.isWebFriendlyImage(image))
+                {
+                    var fileName = Path.GetFileName(image.FileName);
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
+                    blogPost.MediaUrl = "/Uploads/" + fileName;
+                }
+                #endregion
+
+                #region Slug Section
                 var slug = StringUtilities.UrlFriendly(blogPost.Title);
                     if (string.IsNullOrWhiteSpace(slug))
                 {
@@ -66,6 +77,8 @@ namespace Austins_Blog.Controllers
                     ModelState.AddModelError("Title", "The title must be unique");
                     return View(blogPost);
                 }
+                #endregion
+
                 blogPost.Slug = slug;
                 blogPost.Created = DateTimeOffset.Now;
                 db.BlogPosts.Add(blogPost);
@@ -96,10 +109,21 @@ namespace Austins_Blog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Slug,Abstract,Body,MediaUrl,Published")] BlogPost blogPost)
+        public ActionResult Edit([Bind(Include = "Id,Title,Slug,Abstract,Body,MediaUrl,Published")] BlogPost blogPost, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+                #region Image
+                if (ImageUploadValidator.isWebFriendlyImage(image))
+                {
+                    var fileName = Path.GetFileName(image.FileName);
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
+                    blogPost.MediaUrl = "/Uploads/" + fileName;
+                }
+
+                #endregion
+
+                #region Slug
                 var slug = StringUtilities.UrlFriendly(blogPost.Title);
 
                 if (blogPost.Slug != slug)
@@ -116,9 +140,9 @@ namespace Austins_Blog.Controllers
                     }
                     blogPost.Slug = slug;
                 }
+                #endregion
 
 
-               
                 blogPost.Updated = DateTimeOffset.Now;
                 db.Entry(blogPost).State = EntityState.Modified;
                 db.SaveChanges();

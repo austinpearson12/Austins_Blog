@@ -5,7 +5,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="main-wrapper">
+
     <section class="cta-section theme-bg-light py-5">
         <div class="container text-center">
             <h2 class="heading">DevBlog - A Blog Template Made For Developers</h2>
@@ -21,21 +21,27 @@
     </section>
     <section class="blog-list px-3 py-5 p-md-5">
         <div class="container">
-
             <div class="item mb-5">
                 @foreach (var post in Model)
                 {
+                <a href="@Url.Action("Details","BlogPosts", new { slug = @post.Slug })">
                     <div class="media">
-                        <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="~/images/blog/blog-post-thumb-1.jpg" alt="image">
+                        <img class="img-responsive" src="@post.MediaUrl" width="110" height="110" alt="" />
                         <div class="media-body">
-                            <h3 class="title mb-1"><a href="@Url.Action("Details","BlogPosts", new { slug = @post.Slug })">@post.Title</a></h3>
+                            <h3 class="title mb-1">
+                                @post.Title
+                            </h3>
                             <div class="meta mb-1"><span class="date">Posted by Austin Pearson on @post.Created </span><span class="time">5 min read</span><span class="comment"><a href="#">8 comments</a></span></div>
                             <div class="intro">@post.Abstract</div>
-                            <a class="more-link" href="blog-post.html">Read more &rarr;</a>
+
+                            @*<a class="more-link" href="blog-post.html">Read more &rarr;</a>*@
                         </div><!--//media-body-->
                     </div><!--//media-->
+                    <br />
+                </a>
                 }
             </div><!--//item-->
+            
            
 
 
@@ -49,4 +55,3 @@
 
    
 
-</div><!--//main-wrapper-->
