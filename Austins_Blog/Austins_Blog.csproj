@@ -179,6 +179,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogPost.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -194,6 +195,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\.DS_Store" />
     <Content Include="images\blog\.DS_Store" />
+    <Content Include="Private.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="images\about-me.jpg" />
     <Content Include="images\blog\blog-post-banner.jpg" />

@@ -46,21 +46,27 @@
 
                 <ul class="navbar-nav flex-column text-left">
                     <li class="nav-item active">
-                        @*<a class="nav-link" href="index.html"><i class="fas fa-home fa-fw mr-2"></i>Blog Home <span class="sr-only">(current)</span></a>*@
                         @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        @*<a class="nav-link" href="blog-post.html"><i class="fas fa-bookmark fa-fw mr-2"></i>Blog Post</a>*@
-                        @Html.ActionLink("Create Post", "Create", "BlogPosts", null, new { @class = "nav-link" })
+                        @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
                     </li>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Create Post", "Create", "BlogPosts", null, new { @class = "nav-link" })
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link" })
+                        </li>
+                    }
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html"><i class="fas fa-user fa-fw mr-2"></i>About Me</a>
+                        @Html.ActionLink("Contact Me", "Contact", "Home", null, new { @class = "nav-link" })
                     </li>
-                </ul>
-
-                <div class="my-2 my-md-3">
-                    <a class="btn btn-primary" href="https://themes.3rdwavemedia.com/" target="_blank">Get in Touch</a>
-                </div>
+                </ul>              
             </div>
         </nav>
     </header>

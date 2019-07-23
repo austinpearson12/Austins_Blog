@@ -13,9 +13,13 @@ using Microsoft.Ajax.Utilities;
 
 namespace Austins_Blog.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class BlogPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        
+
 
         public string slug { get; private set; }
 
@@ -27,6 +31,7 @@ namespace Austins_Blog.Controllers
         }
 
         // GET: BlogPosts/Details/5
+        [AllowAnonymous]
         public ActionResult Details(string slug)
         {
             if (string.IsNullOrWhiteSpace(slug))
@@ -42,6 +47,7 @@ namespace Austins_Blog.Controllers
         }
 
         // GET: BlogPosts/Create
+        
         public ActionResult Create()
         {
             return View();
