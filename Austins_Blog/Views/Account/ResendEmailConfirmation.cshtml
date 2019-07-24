@@ -1,11 +1,11 @@
 ﻿@model Austins_Blog.Models.ForgotPasswordViewModel
 @{
-    ViewBag.Title = "Forgot your password?";
+    ViewBag.Title = "Resend Email Confirmation";
 }
 
 <h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("ForgotPassword", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("ResendEmailConfirmation", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <h4>Enter your email.</h4>
@@ -22,9 +22,6 @@
             <input type="submit" class="btn btn-outline-success" value="Email Link" />
         </div>
     </div>
-    <p>
-        @Html.ActionLink("Resend Email Confirmation", "ResendEmailConfirmation")
-    </p>
 }
 
 @section Scripts {

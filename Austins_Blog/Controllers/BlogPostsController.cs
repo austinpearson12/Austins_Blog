@@ -11,6 +11,7 @@ using Austins_Blog.Models;
 using Austins_Blog.Utilities;
 using Microsoft.Ajax.Utilities;
 
+
 namespace Austins_Blog.Controllers
 {
     [Authorize(Roles = "Admin")]
@@ -26,6 +27,7 @@ namespace Austins_Blog.Controllers
         // GET: BlogPosts
         public ActionResult Index()
         {
+            
             var publishedBlogPosts = db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).ToList();
             return View(publishedBlogPosts);
         }

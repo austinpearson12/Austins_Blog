@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Austins_Blog.Controllers
 {
@@ -15,9 +17,11 @@ namespace Austins_Blog.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var publishedPosts = db.BlogPosts.Where(b => b.Published).ToList();
+            int pageSize = 1;//display three blog posts at a time on this page
+            int pageNumber = page ?? 1;
+            var publishedPosts = db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).ToPagedList(pageNumber, pageSize);
             return View(publishedPosts);
         }
 

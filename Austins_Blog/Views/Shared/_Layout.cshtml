@@ -16,7 +16,7 @@
 
     <!-- Theme CSS -->
     <link href="~/Content/theme-1.css" rel="stylesheet" />
-
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -56,6 +56,10 @@
                         <li class="nav-item">
                             @Html.ActionLink("Create Post", "Create", "BlogPosts", null, new { @class = "nav-link" })
                         </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Log Off", "LogOff", "Account", null, new { @class = "nav-link" })
+                        </li>
+
                     }
                     else
                     {
@@ -63,10 +67,13 @@
                             @Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link" })
                         </li>
                     }
+
                     <li class="nav-item">
                         @Html.ActionLink("Contact Me", "Contact", "Home", null, new { @class = "nav-link" })
                     </li>
-                </ul>              
+
+
+                </ul>    
             </div>
         </nav>
     </header>
