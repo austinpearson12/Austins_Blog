@@ -17,9 +17,20 @@
     <!-- Theme CSS -->
     <link href="~/Content/theme-1.css" rel="stylesheet" />
     <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <style>
+        .standardH {
+    height: 44px;
+    width: 310px;
+        }
+
+
+    </style>
 </head>
 
+
 <body>
+
 
     <header class="header text-center">
         <h1 class="blog-name pt-lg-4 mb-0"><a href="index.html">Anthony's Blog</a></h1>
@@ -38,8 +49,6 @@
                         <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
                         <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
                         <li class="list-inline-item"><a href="#"><i class="fab fa-github-alt fa-fw"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-codepen fa-fw"></i></a></li>
                     </ul><!--//social-list-->
                     <hr>
                 </div><!--//profile-section-->
@@ -71,15 +80,21 @@
                     <li class="nav-item">
                         @Html.ActionLink("Contact Me", "Contact", "Home", null, new { @class = "nav-link" })
                     </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Edit/Delete Posts", "Index", "BlogPosts", null, new { @class = "nav-link" })
+                        </li>
+                    }
 
 
                 </ul>    
             </div>
         </nav>
     </header>
-    <div class="main-wrapper">
+
         @RenderBody()
-        </div>
+    </div>
         <footer class="footer text-center py-2 theme-bg-dark">
 
             <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->

@@ -6,7 +6,21 @@
 @{
     ViewBag.Title = "Home Page";
 }
+<div class="main-wrapper">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            @using (Html.BeginForm("Index", "Home", FormMethod.Get, htmlAttributes: new { @class = "form" }))
+            {
+                <div class="controls controls-row search-row">
+                    <input id="searchStr" name="searchStr" class="input-block-level standardH" type="text" placeholder="Search..." />
+                    <button id="searchStr" name="searchStr" class="btn btn-success" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
 
+            }
+        </div>
+    </div>
 
 
     <section class="blog-list px-3 py-5 p-md-5">
@@ -31,11 +45,11 @@
                     </a>
                 }
             </div><!--//item-->
-            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of 
-            @Model.PageCount  @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of
+            @Model.PageCount  @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }))
 
         </div>
     </section>
 
-   
+
 

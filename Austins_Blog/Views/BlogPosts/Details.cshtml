@@ -11,19 +11,19 @@
         <div class="container">
             <header class="blog-post-header">
                 <h2 class="title mb-2">@Model.Title</h2>
-                <div class="meta mb-3"><span class="date">Posted by Austin Pearson on @Model.Created</span><span class="time">5 min read</span><span class="comment"><a href="#">4 comments</a></span></div>
+                <div class="meta mb-3"><span class="date">Posted by Austin Pearson on @Model.Created</span>><span class="comment"><a href="#">4 comments</a></span></div>
             </header>
 
             <div class="blog-post-body">
                 <figure class="blog-banner">
-                      
-                        <img class="img-responsive" src="@Model.MediaUrl" width="790" height="395" alt="" />
-                             
-                  </figure>
+
+                    <img class="img-responsive" src="@Model.MediaUrl" width="790" height="395" alt="" />
+
+                </figure>
                 @Html.Raw(Model.Body)
-                
+
             </div>
-        <br />
+            <br />
 
         </div><!--//container-->
     </article>

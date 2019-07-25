@@ -17,14 +17,37 @@ namespace Austins_Blog.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string searchStr)
         {
-            int pageSize = 1;//display three blog posts at a time on this page
-            int pageNumber = page ?? 1;
-            var publishedPosts = db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).ToPagedList(pageNumber, pageSize);
-            return View(publishedPosts);
-        }
+            ViewBag.Search = searchStr;
+            var blogList = IndexSearch(searchStr);
 
+
+            int pageSize = 5;//display three blog posts at a time on this page
+            int pageNumber = page ?? 1;
+            
+            return View(blogList.ToPagedList(pageNumber, pageSize));
+        }
+        public IQueryable<BlogPost> IndexSearch(string searchStr)
+        {
+            IQueryable<BlogPost> result = null;
+            if (searchStr != null)
+            {
+                result = db.BlogPosts.AsQueryable();
+                result = result.Where(p => p.Title.Contains(searchStr)
+                || p.Body.Contains(searchStr)
+                || p.Comments.Any(c => c.Body.Contains(searchStr)
+                || c.Author.FirstName.Contains(searchStr)
+                || c.Author.LastName.Contains(searchStr)
+                || c.Author.DisplayName.Contains(searchStr)
+                || c.Author.Email.Contains(searchStr)));
+            }
+            else
+            {
+                result = db.BlogPosts.AsQueryable();
+            }
+            return result.OrderByDescending(p => p.Created);
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
