@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+
     <title>Bootstrap 4 Blog Template For Developers</title>
 
     <!-- Meta -->
@@ -10,21 +11,18 @@
     <meta name="description" content="Blog Template">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
     <link rel="shortcut icon" href="favicon.ico">
-
+    <link rel="icon" href="@Url.Content("~/Content/favicon.ico")" />
     <!-- FontAwesome JS-->
     <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
 
     <!-- Theme CSS -->
     <link href="~/Content/theme-1.css" rel="stylesheet" />
     <link href="~/Content/PagedList.css" rel="stylesheet" />
-    <link href="~/Content/Style.css" rel="stylesheet" />
     <style>
         .standardH {
-    height: 44px;
-    width: 310px;
+            height: 44px;
+            width: 310px;
         }
-
-
     </style>
 </head>
 
@@ -44,11 +42,11 @@
             <div id="navigation" class="collapse navbar-collapse flex-column">
                 <div class="profile-section pt-3 pt-lg-0">
                     <img class="profile-image mb-3 rounded-circle mx-auto" src="~/images/profile.png" alt="image">
-                    <div class="bio mb-3">Hi, my name is Anthony Doe. Briefly introduce yourself here. You can also provide a link to the about page.<br><a href="about.html">Find out more about me</a></div><!--//bio-->
+                    <div class="bio mb-3">Welcome to my Blog! <br /> Hi, my name is Austin Pearson and I am studying to be a software developer.<br>@Html.ActionLink("Find out more about me", "About", "Home", null, new { @class = "nav-link" })</div><!--//bio-->
                     <ul class="social-list list-inline py-3 mx-auto">
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-github-alt fa-fw"></i></a></li>
+                        <li class="list-inline-item"><a href="https://twitter.com/AustinCPearson1"><i class="fab fa-twitter fa-fw"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/austin-pearson-90068818a/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                        <li class="list-inline-item"><a href="https://github.com/austinpearson12"><i class="fab fa-github-alt fa-fw"></i></a></li>
                     </ul><!--//social-list-->
                     <hr>
                 </div><!--//profile-section-->
@@ -94,7 +92,7 @@
     </header>
 
         @RenderBody()
-    </div>
+    
         <footer class="footer text-center py-2 theme-bg-dark">
 
             <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->

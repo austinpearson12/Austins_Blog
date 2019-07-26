@@ -194,6 +194,7 @@
     <Compile Include="Utilities\StringUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\favicon.ico" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Style.css" />
     <Content Include="Content\theme-1.css" />
@@ -204,6 +205,7 @@
     <Content Include="images\.DS_Store" />
     <Content Include="images\blog\.DS_Store" />
     <Content Include="Private.config" />
+    <None Include="Properties\PublishProfiles\AustinsBlog - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\AustinsBlog20190725043522 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="images\about-me.jpg" />
@@ -399,7 +401,6 @@
     <Content Include="Views\BlogPosts\Details.cshtml" />
     <Content Include="Views\BlogPosts\Edit.cshtml" />
     <Content Include="Views\BlogPosts\Index.cshtml" />
-    <Content Include="Views\Comments\Create.cshtml" />
     <Content Include="Views\Comments\Delete.cshtml" />
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
