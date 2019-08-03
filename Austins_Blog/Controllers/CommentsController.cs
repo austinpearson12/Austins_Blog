@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Austins_Blog.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CommentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

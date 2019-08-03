@@ -22,13 +22,13 @@ namespace Austins_Blog.Controllers
         
 
 
-        public string slug { get; private set; }
+       
 
         // GET: BlogPosts
         public ActionResult Index()
         {
             
-            var publishedBlogPosts = db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).ToList();
+            var publishedBlogPosts = db.BlogPosts.OrderByDescending(b => b.Created).ToList();
             return View(publishedBlogPosts);
         }
 

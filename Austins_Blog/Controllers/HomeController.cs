@@ -30,22 +30,19 @@ namespace Austins_Blog.Controllers
         }
         public IQueryable<BlogPost> IndexSearch(string searchStr)
         {
-            IQueryable<BlogPost> result = null;
+            var result = db.BlogPosts.Where(b => b.Published);
             if (searchStr != null)
             {
-                result = db.BlogPosts.AsQueryable();
                 result = result.Where(p => p.Title.Contains(searchStr)
                 || p.Body.Contains(searchStr)
+                || p.Abstract.Contains(searchStr)
                 || p.Comments.Any(c => c.Body.Contains(searchStr)
                 || c.Author.FirstName.Contains(searchStr)
                 || c.Author.LastName.Contains(searchStr)
                 || c.Author.DisplayName.Contains(searchStr)
                 || c.Author.Email.Contains(searchStr)));
             }
-            else
-            {
-                result = db.BlogPosts.AsQueryable();
-            }
+         
             return result.OrderByDescending(p => p.Created);
         }
         public ActionResult About()
