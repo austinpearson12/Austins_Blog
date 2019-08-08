@@ -23,7 +23,7 @@ namespace Austins_Blog.Controllers
             var blogList = IndexSearch(searchStr);
 
 
-            int pageSize = 5;//display three blog posts at a time on this page
+            int pageSize = 5;
             int pageNumber = page ?? 1;
             
             return View(blogList.ToPagedList(pageNumber, pageSize));
