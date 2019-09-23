@@ -203,6 +203,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\.DS_Store" />
+    <Content Include="images\Austin Pearson.jpg" />
     <Content Include="images\blog\.DS_Store" />
     <Content Include="Private.config" />
     <None Include="Properties\PublishProfiles\AustinsBlog - Web Deploy.pubxml" />
